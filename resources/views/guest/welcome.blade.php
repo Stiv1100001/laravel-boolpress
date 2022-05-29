@@ -19,7 +19,7 @@
         @if (Route::has('login'))
         <div class="top-right links d-flex justify-content-end p-3">
             @auth
-            <a href="{{ url('/admin') }}" class="btn btn-primary">Home</a>
+            <a href="{{ url('/admin') }}" class="btn btn-primary">Admin</a>
             @else
             <a href="{{ route('login') }}">Login</a>
 
