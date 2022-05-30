@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@php
+use Carbon\Carbon;
+@endphp
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -24,7 +28,7 @@
                 <a href="{{ route('admin.posts.create') }}" class="btn btn-info">New Post</a>
             </div>
 
-            <table class="table">
+            <table class="table" aria-describedat="test" aria-describedby="test">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -48,7 +52,8 @@
                             <span class="badge badge-pill">{{$cat->name}}</span>
                             @endforeach
                         </td>
-                        <td>{{ (new DateTime($post->created_at))->format('d/m/Y h:m') }}</td>
+                        <td>{{ Carbon::createFromFormat('Y-m-d H:i:s', $post->created_at)->locale('it')->format('d/m/Y
+                            H:i') }}</td>
                         <td>
                             <a href="{{ route('admin.posts.edit', ['post' => $post])}}" class="btn btn-warning">Edit</a>
                             <form action="{{ route('admin.posts.destroy', $post)}}" method="POST">
