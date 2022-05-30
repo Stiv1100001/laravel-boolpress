@@ -4,12 +4,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-6">
-            <form action="{{ route('admin.posts.store') }}" method="POST">
+            <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="text" name="title" class=" form-control mb-3" placeholder="Title">
                 <input type="text" name="author" class=" form-control mb-3" placeholder="Author">
                 <textarea name="text" placeholder="Content" class=" form-control mb-3"></textarea>
-                <input type="text" name="img" class=" form-control mb-3" placeholder="Image URL">
+                <input class="form-control" type="file" name="img">
 
                 @foreach ($categories as $category)
                 <div class="form-check">

@@ -9,6 +9,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -47,10 +48,9 @@ class PostController extends Controller
 
         $data['slug'] = Str::slug($data['title'], '-');
 
-        // dd($data);
-
         $newPost = new Post();
         $newPost->fill($data);
+        $newPost->img = Storage::put('uploads', $data['img']);
         $newPost->save();
 
         $newPost->categories()->sync($data['categories']);
